@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap&family=Eagle+Lake');
+
+@import "tailwindcss";
+
+@plugin "./hero.ts";
+
+@source '../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+@custom-variant dark (&:is(.dark *));
+
+/* Google Fonts */
+
+/* Design System Variables */
+:root {
+  /* Golden Ratio Scale */
+  --space-unit: 1rem;
+  --space-sm: calc(var(--space-unit) / 1.618);
+  --space-md: var(--space-unit);
+  --space-lg: calc(var(--space-unit) * 1.618);
+  --space-xl: calc(var(--space-unit) * 2.618);
+  --space-xxl: calc(var(--space-unit) * 4.236);
+
+  /* Bubbly Card Properties */
+  --card-radius: 16px;
+  --card-padding: var(--space-xl);
+
+  /* Color System - Same for both modes with slight adjustments */
+  --color-bg: #ffffff;
+  --color-black: #1a202c;
+  --color-bg-alt: #f8fafc;
+  --color-card: #ffffff;
+  --color-text: #1a202c;
+  --color-text-light: #4a5568;
+  --color-primary: #2563eb;
+  --color-border: #e2e8f0;
+  --color-bblue: #aac5ff;
+
+  /* Typography */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --font-title: 'Eagle Lake', serif;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Container Width */
+  --container-max-width: 1200px;
+  --container-padding: var(--space-md);
+}
+
+.dark {
+  --color-bg: #0f172a;
+  --color-bg-alt: #1e293b;
+  --color-card: #1e293b;
+  --color-text: #f1f5f9;
+  --color-text-light: #cbd5e1;
+  --color-primary: #3b82f6;
+  --color-border: #334155;
+}
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-normal);
+  line-height: 1.6;
+}
