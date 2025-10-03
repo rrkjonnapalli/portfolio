@@ -4,6 +4,7 @@ import * as yml from 'yaml';
 import { user as USER_DATA } from '../data';
 import Toast from './Toast'; // Add this import
 import './Portfolio.css';
+import Loading from './Loading';
 
 function useQueryParams() {
   return new URLSearchParams(window.location.search);
@@ -19,8 +20,13 @@ function isValidURL(str: string) {
   return !!pattern.test(str);
 }
 
+// function sleep(ms: number) {
+//   return new Promise(resolve => setTimeout(resolve, ms));
+// }
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function loadYaml(url: string): Promise<any> {
+async function loadYaml(url: string): Promise<any> {
+  // await sleep(5000);
   // return Promise.resolve(null);
   return fetch(url)
     .then(res => {
@@ -92,7 +98,7 @@ export default function Portfolio() {
   };
 
   if (isLoading) {
-    return <div className="loading">Loading...</div>;
+    return <Loading />;
   }
 
   return (
