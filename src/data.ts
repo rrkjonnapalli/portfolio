@@ -1,6 +1,6 @@
 export const user = {
   "title": "R Ravikiran Jonnapalli",
-  "headline": "Senior Software Engineer | Full-Stack Developer (MEAN Stack)",
+  "headline": "Architect | Senior Software Engineer | Full-Stack Developer (MEAN Stack)",
   "aboutme": "Experienced Senior Software Engineer with 7+ years specializing in the MEAN stack and full-stack development. Consistently delivered high-performance software solutions that enhance efficiency, reduce downtime, and enable seamless integrations across cloud platforms. Known for backend optimization, API design, and building scalable systems that directly improve business performance.\n",
   "mobile": '+91 9494124972',
   "email": "r.ravikiranjonnapalli@gmail.com",

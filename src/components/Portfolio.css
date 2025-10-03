@@ -79,7 +79,7 @@
 .subtitle {
   font-family: var(--font-body);
   font-size: 1.5rem;
-  color: var(--color-primary);
+  color: var(--color-dblue);
   margin-bottom: var(--space-xl);
   font-weight: var(--font-weight-medium);
 }
@@ -126,7 +126,7 @@
 }
 
 .role {
-  color: var(--color-primary);
+  color: var(--color-dblue);
   font-weight: var(--font-weight-medium);
   display: block;
 }
@@ -151,7 +151,7 @@
 }
 
 .bullet {
-  color: var(--color-primary);
+  color: var(--color-lblue);
   margin-right: var(--space-md);
   font-weight: var(--font-weight-semibold);
 }
@@ -251,7 +251,7 @@
   border: none;
   cursor: pointer;
   font-family: var(--font-family);
-  background-color: var(--color-bblue);
+  background-color: var(--color-lblue);
   color: var(--color-black);
 }
 

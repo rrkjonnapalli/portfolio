@@ -32,8 +32,8 @@
   --color-text-light: #4a5568;
   --color-primary: #2563eb;
   --color-border: #e2e8f0;
-  --color-bblue: #aac5ff;
-
+  --color-lblue: #a2d2ff;
+  --color-dblue: #004e98;
   /* Typography */
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-weight-light: 300;
@@ -59,6 +59,7 @@
   --color-text-light: #cbd5e1;
   --color-primary: #3b82f6;
   --color-border: #334155;
+  --color-dblue: #a2d2ff;
 }
 
 /* Base Styles */
