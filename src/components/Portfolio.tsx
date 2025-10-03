@@ -9,12 +9,19 @@ function useQueryParams() {
   return new URLSearchParams(window.location.search);
 }
 
-function isValidImageUrl(url: string) {
-  return /\.(jpeg|jpg|gif|png|webp|svg)$/i.test(url);
+function isValidURL(str: string) {
+  const pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+    '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+    '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+    '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+  return !!pattern.test(str);
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function loadYaml(url: string): Promise<any> {
+  // return Promise.resolve(null);
   return fetch(url)
     .then(res => {
       if (res.status !== 200) {
@@ -60,7 +67,7 @@ export default function Portfolio() {
       return loadYaml(getURL(source));
     }).then(_user => {
       if (!_user) { return;}
-      if (!_user.dp || !isValidImageUrl(_user.dp)) {
+      if (!_user.dp || !isValidURL(_user.dp)) {
         _user.dp = me;
       }
       setUser(_user);
@@ -153,6 +160,7 @@ export default function Portfolio() {
                   <div className="experience-header">
                     <div>
                       <h3 className="company">{job.name}</h3>
+                      <span className="period">{job.location}</span>
                       <span className="role">{job.position}</span>
                     </div>
                     <span className="period">{job.from} - {job.to}</span>

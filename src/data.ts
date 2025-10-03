@@ -20,6 +20,7 @@ export const user = {
   "timeline": [
     {
       "name": "Cameo Global",
+      "location": "Hyderabad, India (Remote)",
       "from": "Nov 2022",
       "to": "Present",
       "position": "Senior Software Engineer",
@@ -36,6 +37,7 @@ export const user = {
     },
     {
       "name": "Rythmos (Loyalty Methods)",
+      "location": "Hyderabad, India",
       "from": "Apr 2019",
       "to": "Oct 2022",
       "position": "Senior Associate Consultant",
@@ -54,6 +56,7 @@ export const user = {
     },
     {
       "name": "Way2Online",
+      "location": "Hyderabad, India",
       "from": "May 2017",
       "to": "Feb 2019",
       "position": "Product Engineer",
