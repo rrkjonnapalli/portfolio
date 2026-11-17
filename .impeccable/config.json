@@ -1,0 +1,48 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "geist",
+        "createdAt": "2026-10-22T18:04:05.209Z"
+      },
+      {
+        "rule": "overused-font",
+        "value": "geist mono",
+        "createdAt": "2026-10-22T18:04:05.243Z"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "et-book",
+        "createdAt": "2026-11-17T09:00:10.692Z"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "et-book-osf",
+        "createdAt": "2026-11-17T09:00:10.712Z"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "caslon-display",
+        "createdAt": "2026-11-17T09:03:11.984Z"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "caslon-text",
+        "createdAt": "2026-11-17T09:03:12.007Z"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "unifraktur",
+        "createdAt": "2026-11-17T09:05:54.574Z"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "marcellus-sc",
+        "createdAt": "2026-11-17T09:09:54.066Z"
+      }
+    ]
+  }
+}

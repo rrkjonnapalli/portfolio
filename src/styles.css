@@ -1,0 +1,118 @@
+/* The Ravikiran Times. One page, no framework, no JavaScript. */
+
+/* ---------- Fonts: ET Book, from edwardtufte/tufte-css (MIT) ---------- */
+@font-face { font-family: "et-book"; src: url("/fonts/et-book-roman.woff") format("woff"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "et-book"; src: url("/fonts/et-book-italic.woff") format("woff"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "et-book"; src: url("/fonts/et-book-semibold.woff") format("woff"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "et-book"; src: url("/fonts/et-book-bold.woff") format("woff"); font-weight: 700; font-style: normal; font-display: swap; }
+/* Masthead only: Marcellus SC (OFL), flared roman capitals. */
+@font-face { font-family: "marcellus-sc"; src: url("/fonts/marcellus-sc-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+/* Old-style figures, used for dates and the email address only. */
+@font-face { font-family: "et-book-osf"; src: url("/fonts/et-book-osf.woff") format("woff"); font-weight: 400; font-style: normal; font-display: swap; }
+
+/* ---------- Tokens ---------- */
+:root {
+  --paper: #F2F0EA;        /* page background */
+  --ink: #121212;          /* all text and rules */
+  --spot: #f9473c;         /* the one accent: kicker, drop cap, button, link hover */
+  --on-spot: #121212;      /* ink on the accent: 5.35:1, white was 3.5:1 (HANDOFF.md, Accessibility) */
+  --invert-text: #FFFFF8;  /* text on ink, skill cell hover */
+
+  --serif: "et-book", Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --nameplate: "marcellus-sc", var(--serif);
+  --serif-osf: "et-book-osf", "et-book", Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
+
+  --rule-hair: 1px solid var(--ink);
+  --rule-heavy: 3px solid var(--ink);
+  --rule-double: 4px double var(--ink);
+
+  --page-pad: clamp(16px, 3.4vw, 44px);
+  --page-max: 1180px;
+  --col-gap: 36px;         /* between lead article and right rail */
+  --gutter: 28px;          /* between text columns and between briefs */
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--serif); -webkit-font-smoothing: antialiased; }
+a { color: var(--ink); }
+ul { list-style: none; margin: 0; padding: 0; }
+h1, h2, h3, p, figure { margin: 0; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+
+.page { min-height: 100vh; padding: var(--page-pad); max-width: calc(var(--page-max) + 2 * var(--page-pad)); margin: 0 auto; display: flex; flex-direction: column; }
+
+/* Small letter-spaced capitals: masthead meta, motto, kicker, section labels, button. */
+.label { text-transform: uppercase; letter-spacing: 0.12em; }
+
+/* ---------- Masthead ---------- */
+.masthead { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; padding-bottom: 14px; border-bottom: var(--rule-double); }
+.masthead__meta { width: 100%; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 20px; font-size: 13px; }
+.masthead__meta a { text-decoration: none; }
+.masthead__meta a:hover { text-decoration: underline; }
+.masthead__title { font-family: var(--nameplate); font-size: clamp(32px, 8vw, 108px); line-height: 1; font-weight: 400; letter-spacing: 0.04em; }
+.masthead__motto { font-size: 13px; }
+
+/* ---------- Front page: lead article + right rail ---------- */
+.front { display: flex; flex-wrap: wrap; gap: 0 var(--col-gap); padding-top: 26px; }
+
+.lead { flex: 999 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 18px; padding-bottom: 28px; }
+.kicker { align-self: flex-start; padding: 4px 10px; background: var(--spot); color: var(--on-spot); font-size: 13px; font-weight: 700; }
+.lead__headline { font-size: clamp(36px, 5.5vw, 72px); line-height: 1; font-weight: 700; letter-spacing: -0.01em; }
+.lead__deck { font-size: clamp(20px, 2vw, 25px); line-height: 1.35; font-style: italic; }
+
+.lead__body { display: flex; flex-wrap: wrap; gap: 24px var(--gutter); padding-top: 8px; }
+.portrait { flex: 1 1 220px; max-width: 300px; display: flex; flex-direction: column; gap: 8px; }
+.portrait img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border: var(--rule-hair); filter: grayscale(1) contrast(1.08); transition: filter 0.3s ease; }
+.portrait img:hover { filter: none; }
+.portrait figcaption { font-size: 15px; font-style: italic; line-height: 1.35; }
+
+.story { flex: 999 1 340px; min-width: 0; columns: 2 220px; column-gap: var(--gutter); column-rule: var(--rule-hair); font-size: 19px; line-height: 1.5; }
+.story p { margin: 0 0 12px; }
+.story p:last-child { margin-bottom: 0; }
+/* Drop cap: the "R" of his name. */
+.story__first::first-letter { float: left; font-size: 70px; line-height: 0.78; font-weight: 700; padding: 6px 8px 0 0; color: var(--spot); }
+
+/* ---------- Section labels ---------- */
+.section-label { padding: 8px 0; font-size: 14px; font-weight: 700; }
+
+/* ---------- Open-source desk ---------- */
+.desk { display: flex; flex-direction: column; margin-top: 12px; border-top: var(--rule-heavy); }
+.desk__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr)); gap: 0 var(--gutter); }
+.brief { display: flex; flex-direction: column; gap: 4px; height: 100%; padding: 14px 0; border-top: var(--rule-hair); text-decoration: none; }
+.brief__name { font-size: 25px; line-height: 1.1; font-weight: 700; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.brief__text { font-size: 17px; line-height: 1.4; }
+.brief:hover .brief__name { color: var(--spot); }
+
+/* ---------- Right rail ---------- */
+.rail { flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 26px; padding-bottom: 28px; }
+
+.career { display: flex; flex-direction: column; border-top: var(--rule-heavy); }
+.job { display: flex; flex-direction: column; gap: 2px; padding: 12px 0; border-top: var(--rule-hair); }
+.job:last-child { border-bottom: var(--rule-hair); }
+.job__company { font-size: 27px; line-height: 1.1; font-weight: 700; }
+.job__role { font-size: 18px; }
+.job__dates { font-family: var(--serif-osf); font-size: 16px; }
+
+.classifieds { display: flex; flex-direction: column; gap: 4px; border-top: var(--rule-heavy); }
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); border-top: var(--rule-hair); border-left: var(--rule-hair); font-size: 18px; font-weight: 600; }
+.skills li { padding: 10px 8px; text-align: center; border-right: var(--rule-hair); border-bottom: var(--rule-hair); transition: background 0.15s ease, color 0.15s ease; }
+.skills li:hover { background: var(--ink); color: var(--invert-text); }
+
+.contact { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: 18px; border: var(--rule-heavy); }
+.contact__title { font-size: 31px; line-height: 1.05; font-weight: 700; }
+.button { display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 22px; background: var(--spot); color: var(--on-spot); border: 2px solid var(--ink); box-shadow: 5px 5px 0 var(--ink); font-size: 15px; font-weight: 700; text-decoration: none; transition: transform 0.12s ease, box-shadow 0.12s ease; }
+.button:hover, .button:active { transform: translate(3px, 3px); box-shadow: 2px 2px 0 var(--ink); }
+.contact__email { font-family: var(--serif-osf); font-size: 16px; overflow-wrap: anywhere; }
+
+/* ---------- Motion preference ---------- */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+
+/* ---------- Print: it is a newspaper, after all ---------- */
+@media print {
+  body { background: #fff; }
+  .portrait img { filter: grayscale(1); }
+  .button { box-shadow: none; }
+}

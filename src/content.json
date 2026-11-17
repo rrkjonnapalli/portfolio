@@ -1,0 +1,56 @@
+{
+  "meta": {
+    "title": "R Ravikiran Jonnapalli, Senior Software Engineer",
+    "description": "R Ravikiran Jonnapalli is a senior software engineer with 9+ years of building backends, APIs and scalable systems.",
+    "url": "https://rrk.rniverse.com/"
+  },
+  "masthead": {
+    "established": "Est. May 2017",
+    "github": { "label": "github.com/rrkjonnapalli", "href": "https://github.com/rrkjonnapalli" },
+    "title": "The Ravikiran Times",
+    "motto": "Written, edited and shipped by rrk"
+  },
+  "lead": {
+    "kicker": "Exclusive",
+    "headline": "Senior Engineer Ships for Nine Years",
+    "deck": "From APIs to data pipelines, he builds backends that stay fast, stay up and scale.",
+    "portrait": {
+      "src": "images/ravikiran.jpg",
+      "alt": "Portrait of R Ravikiran Jonnapalli",
+      "caption": "R Ravikiran Jonnapalli, Senior Software Engineer."
+    },
+    "story": [
+      "R Ravikiran Jonnapalli is a senior software engineer with 9+ years in full-stack development, most of it on the MEAN stack. His work centres on backend optimization, API design and scalable systems that integrate cleanly across cloud platforms.",
+      "Since May 2017 he has worked at three companies: Way2Online, Rythmos and Cameo Global.",
+      "Outside work he builds in the open: rniverse, a set of TypeScript services and libraries that run on Bun, and Tend, a desktop app for notes and tasks."
+    ]
+  },
+  "projects": {
+    "label": "Open work: projects and libraries",
+    "items": [
+      { "name": "tend", "href": "https://github.com/rrkjonnapalli/tend", "text": "A quiet desktop app for notes, tasks, people and a library. Notes are plain Markdown files in a folder you pick." },
+      { "name": "aham", "href": "https://github.com/rniverse/aham", "text": "A central authentication service. It issues signed JWTs and publishes a public key endpoint, so any other service can verify tokens locally." },
+      { "name": "notify", "href": "https://github.com/rniverse/notify", "text": "A central notification service. Email sending sits behind a queued, retried and audited pipeline." },
+      { "name": "connectors", "href": "https://github.com/rniverse/connectors", "text": "One connection model for PostgreSQL, Redis, MongoDB and Kafka, with health checks and a circuit breaker." },
+      { "name": "utils", "href": "https://github.com/rniverse/utils", "text": "Shared utilities: environment, logging, an HTTP client, IDs, crypto, dates and validation." },
+      { "name": "grill", "href": "https://github.com/rniverse/grill", "text": "An interview-prep app. Browse curated questions, then add your own notes and bookmarks, stored locally." }
+    ]
+  },
+  "career": {
+    "label": "Career, in brief",
+    "items": [
+      { "company": "New Era Technology", "role": "Senior Software Engineer", "dates": "Nov 2022 - Oct 2026" },
+      { "company": "Rythmos (Loyalty Methods)", "role": "Senior Associate Consultant", "dates": "Apr 2019 - Oct 2022" },
+      { "company": "Way2Online", "role": "Product Engineer", "dates": "May 2017 - Feb 2019" }
+    ]
+  },
+  "skills": {
+    "label": "Classifieds: skills on offer",
+    "items": ["TypeScript", "Node.js", "Bun", "MongoDB", "Express", "Angular", "React", "Python", "Kafka", "Apache Nifi", "Docker", "Git"]
+  },
+  "contact": {
+    "heading": "Have something worth building? Let's connect.",
+    "button": "Send a message",
+    "email": "r.ravikiranjonnapalli@gmail.com"
+  }
+}

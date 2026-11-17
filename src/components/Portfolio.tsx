@@ -1,252 +1,85 @@
-import { useState, useEffect } from 'react';
-import me from '../assets/rrkjonnapalli.png';
-import * as yml from 'yaml';
-import { user as USER_DATA } from '../data';
-import Toast from './Toast'; // Add this import
-import './Portfolio.css';
-import Loading from './Loading';
+import portrait from '@assets/ravikiran.webp';
+import content from '../content.json';
 
-function useQueryParams() {
-  return new URLSearchParams(window.location.search);
-}
-
-function isValidURL(str: string) {
-  const pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
-    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
-    '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
-    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
-    '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
-    '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
-  return !!pattern.test(str);
-}
-
-// function sleep(ms: number) {
-//   return new Promise(resolve => setTimeout(resolve, ms));
-// }
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-async function loadYaml(url: string): Promise<any> {
-  // await sleep(5000);
-  // return Promise.resolve(null);
-  return fetch(url)
-    .then(res => {
-      if (res.status !== 200) {
-        throw new Error(`Failed to fetch YAML status - ${res.status}`);
-      }
-      return res.text()
-    })
-    .then(data => yml.parse(data));
-}
-
-function getURL(q: string) {
-  return `https://raw.githubusercontent.com/${q}/${q}/main/${q}.yml`;
-}
-
+// The Ravikiran Times, ported from the Claude Design build kit. content.json is the source of truth.
 export default function Portfolio() {
-  const [darkMode, setDarkMode] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [toast, setToast] = useState({ show: false, message: '', type: 'error' });
-
-  const showError = (message: string) => {
-    setToast({ show: true, message, type: 'error' });
-  };
-
-  const hideToast = () => {
-    setToast({ ...toast, show: false });
-  };
-
-  const [user, setUser] = useState(USER_DATA);
-  const query = useQueryParams();
-  const source = 'rrkjonnapalli'
-  const _q = query.get('q') || source;
-  const [q] = useState(_q.toLowerCase());
-
-  useEffect(() => {
-    setIsLoading(true);
-    const url = getURL(q);
-    loadYaml(url).then((d) => {
-      document.title = `${q}'s Portfolio`;
-      return d;
-    }).catch(e => {
-      console.error('Error loading user YAML:', e);
-      showError(`Could not load data for "${q}". Loading default ...`);
-      return loadYaml(getURL(source));
-    }).then(_user => {
-      if (!_user) { return;}
-      if (!_user.dp || !isValidURL(_user.dp)) {
-        _user.dp = me;
-      }
-      setUser(_user);
-    }).finally(() => setIsLoading(false));
-  }, [q]);
-
-
-
-
-  useEffect(() => {
-    const isDark = localStorage.getItem('theme') === 'dark';
-    setDarkMode(isDark);
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.className = darkMode ? 'dark' : 'light';
-    localStorage.setItem('theme', darkMode ? 'dark' : 'light');
-  }, [darkMode]);
-
-  const toggleTheme = () => {
-    setDarkMode(!darkMode);
-  };
-
-  if (isLoading) {
-    return <Loading />;
-  }
+  const { masthead, lead, projects, career, skills, contact } = content;
+  const [first, ...rest] = lead.story;
 
   return (
-    <div className="portfolio">
-      {/* Theme Toggle */}
-      <button
-        onClick={toggleTheme}
-        className="theme-toggle"
-        aria-label="Toggle theme"
-      >
-        {darkMode ? '☀️' : '🌙'}
-      </button>
+    <div className="page">
+      <header className="masthead">
+        <div className="masthead__meta label">
+          <span>{masthead.established}</span>
+          <a href={masthead.github.href}>{masthead.github.label}</a>
+        </div>
+        <h1 className="masthead__title">{masthead.title}</h1>
+        <p className="masthead__motto label">{masthead.motto}</p>
+      </header>
 
-      {/* Toast component */}
-      {toast.show && (
-        <Toast
-          message={toast.message}
-          type='error'
-          onClose={hideToast}
-        />
-      )}
+      <main className="front">
+        <article className="lead">
+          <span className="kicker label">{lead.kicker}</span>
+          <h2 className="lead__headline">{lead.headline}</h2>
+          <p className="lead__deck">{lead.deck}</p>
 
-      {/* Hero Section */}
-      <section className="hero">
-        <div className="container">
-          <div className="hero-content">
-            {/* <div className="avatar">RRK</div> */}
-            <div className="photo-container">
-              <img
-                src={me}
-                alt={user.title}
-                className="professional-photo"
-              />
-            </div>
-            <h1>{user.title}</h1>
-            <p className="subtitle">{user.headline}</p>
-            <div className="hero-buttons">
-              <a href="#contact" className="btn bg-alt">Get In Touch</a>
-              <a href="#experience" className="btn bg-alt">View Experience</a>
+          <div className="lead__body">
+            <figure className="portrait">
+              <img src={portrait} width={800} height={1000} alt={lead.portrait.alt} />
+              <figcaption>{lead.portrait.caption}</figcaption>
+            </figure>
+            <div className="story">
+              <p className="story__first">{first}</p>
+              {rest.map((p) => <p key={p}>{p}</p>)}
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* About Section */}
-      <section id="about" className="section">
-        <div className="container">
-          <h2 className="section-title">About Me</h2>
-          <div className="card about-card">
-            <p className="text-large">
-              {user.aboutme}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Experience Section */}
-      <section id="experience" className="section bg-alt">
-        <div className="container">
-          <h2 className="section-title">Experience</h2>
-          <div className="experience-grid">
-            {
-              user.timeline.map((job, index) => (
-                <div key={index} className="card experience-card">
-                  <div className="experience-header">
-                    <div>
-                      <h3 className="company">{job.name}</h3>
-                      <span className="period">{job.location}</span>
-                      <span className="role">{job.position}</span>
-                    </div>
-                    <span className="period">{job.from} - {job.to}</span>
-                  </div>
-                  <ul className="achievements">
-                    {job.responsibilities.map((achievement, idx) => (
-                      <li key={idx} className="achievement">
-                        <span className="bullet">→</span>
-                        {achievement}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+          <section className="desk" aria-labelledby="desk-title">
+            <h3 id="desk-title" className="section-label label">{projects.label}</h3>
+            <ul className="desk__grid">
+              {projects.items.map((p) => (
+                <li key={p.name}>
+                  <a className="brief" href={p.href}>
+                    <span className="brief__name">{p.name}</span>
+                    <span className="brief__text">{p.text}</span>
+                  </a>
+                </li>
               ))}
-          </div>
-        </div>
-      </section>
+            </ul>
+          </section>
+        </article>
 
-      {/* Skills Section */}
-      <section id="skills" className="section">
-        <div className="container">
-          <h2 className="section-title">Core Skills</h2>
-          <div className="skills-grid">
-            {user.skills.map((skill) => (
-              <div key={skill} className="card skill-card">
-                {skill}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        <aside className="rail">
+          <section className="career" aria-labelledby="career-title">
+            <h3 id="career-title" className="section-label label">{career.label}</h3>
+            <ul className="career__list">
+              {career.items.map((j) => (
+                <li key={j.company} className="job">
+                  <span className="job__company">{j.company}</span>
+                  <span className="job__role">{j.role}</span>
+                  <span className="job__dates">{j.dates}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="section bg-alt">
-        <div className="container">
-          <h2 className="section-title">Get In Touch</h2>
-          <div className="contact-grid">
-            <div className="card contact-card">
-              <h3>Let's work together</h3>
-              <p>I'm always open to discussing new opportunities and innovative projects.</p>
+          <section className="classifieds" aria-labelledby="skills-title">
+            <h3 id="skills-title" className="section-label label">{skills.label}</h3>
+            <ul className="skills">
+              {skills.items.map((s) => <li key={s}>{s}</li>)}
+            </ul>
+          </section>
 
-              <div className="contact-methods">
-                <div className="contact-method">
-                  <div className="contact-icon">📧</div>
-                  <div>
-                    <div className="method-label">Email</div>
-                    <a href={`mailto:${user.email}`} className="method-value">
-                      {user.email}
-                    </a>
-                  </div>
-                </div>
-
-                <div className="contact-method">
-                  <div className="contact-icon">🌐</div>
-                  <div>
-                    <div className="method-label">Website</div>
-                    <a href={user.website} target="_blank" className="method-value">
-                      {user.website}
-                    </a>
-                  </div>
-                </div>
-
-                {/* <div className="contact-method">
-                  <div className="contact-icon">📱</div>
-                  <div>
-                    <div className="method-label">Phone</div>
-                    <div className="method-value">{user.mobile}</div>
-                  </div>
-                </div> */}
-              </div>
-
-              <div className="contact-action">
-                <a href={`mailto:${user.email}`} className="btn">
-                  Send Message
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+          <section className="contact" aria-labelledby="contact-title">
+            <h3 id="contact-title" className="contact__title">{contact.heading}</h3>
+            <a className="button label" href={`mailto:${contact.email}`}>
+              {contact.button}
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="M13 6l6 6-6 6" /></svg>
+            </a>
+            <a className="contact__email" href={`mailto:${contact.email}`}>{contact.email}</a>
+          </section>
+        </aside>
+      </main>
     </div>
   );
 }
