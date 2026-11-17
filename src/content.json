@@ -1,28 +1,28 @@
 {
   "meta": {
-    "title": "R Ravikiran Jonnapalli, Senior Software Engineer",
-    "description": "R Ravikiran Jonnapalli is a senior software engineer with 9+ years of building backends, APIs and scalable systems.",
+    "title": "R Ravikiran Jonnapalli, Software Engineer",
+    "description": "R Ravikiran Jonnapalli is a software engineer with 9+ years of building backends, APIs and scalable systems.",
     "url": "https://rrk.rniverse.com/"
   },
   "masthead": {
     "established": "Est. May 2017",
     "github": { "label": "github.com/rrkjonnapalli", "href": "https://github.com/rrkjonnapalli" },
-    "title": "The Ravikiran Times",
+    "title": "RRK’s Chronicle",
     "motto": "Written, edited and shipped by rrk"
   },
   "lead": {
     "kicker": "Exclusive",
-    "headline": "Senior Engineer Ships for Nine Years",
+    "headline": "Software Engineer, Shipping Since 2017",
     "deck": "From APIs to data pipelines, he builds backends that stay fast, stay up and scale.",
     "portrait": {
       "src": "images/ravikiran.jpg",
       "alt": "Portrait of R Ravikiran Jonnapalli",
-      "caption": "R Ravikiran Jonnapalli, Senior Software Engineer."
+      "caption": "R Ravikiran Jonnapalli, Software Engineer."
     },
     "story": [
-      "R Ravikiran Jonnapalli is a senior software engineer with 9+ years in full-stack development, most of it on the MEAN stack. His work centres on backend optimization, API design and scalable systems that integrate cleanly across cloud platforms.",
-      "Since May 2017 he has worked at three companies: Way2Online, Rythmos and Cameo Global.",
-      "Outside work he builds in the open: rniverse, a set of TypeScript services and libraries that run on Bun, and Tend, a desktop app for notes and tasks."
+      "R Ravikiran Jonnapalli is a software engineer with 9+ years in full-stack development, most of it on the MEAN stack.",
+      "His work centres on backend optimization, API design and scalable systems that integrate cleanly across cloud platforms.",
+      "Outside work he builds in the open: rniverse and rrkjonnapalli on GitHub, a set of services and libraries."
     ]
   },
   "projects": {
@@ -36,20 +36,12 @@
       { "name": "grill", "href": "https://github.com/rniverse/grill", "text": "An interview-prep app. Browse curated questions, then add your own notes and bookmarks, stored locally." }
     ]
   },
-  "career": {
-    "label": "Career, in brief",
-    "items": [
-      { "company": "New Era Technology", "role": "Senior Software Engineer", "dates": "Nov 2022 - Oct 2026" },
-      { "company": "Rythmos (Loyalty Methods)", "role": "Senior Associate Consultant", "dates": "Apr 2019 - Oct 2022" },
-      { "company": "Way2Online", "role": "Product Engineer", "dates": "May 2017 - Feb 2019" }
-    ]
-  },
   "skills": {
     "label": "Classifieds: skills on offer",
     "items": ["TypeScript", "Node.js", "Bun", "MongoDB", "Express", "Angular", "React", "Python", "Kafka", "Apache Nifi", "Docker", "Git"]
   },
   "contact": {
-    "heading": "Have something worth building? Let's connect.",
+    "heading": "Have something worth building? Let’s connect.",
     "button": "Send a message",
     "email": "r.ravikiranjonnapalli@gmail.com"
   }

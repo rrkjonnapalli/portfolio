@@ -10,7 +10,7 @@ web
 Engineering peers and tech leads evaluating R Ravikiran Jonnapalli as a colleague or hire. They judge depth: what systems he built, which problems he solved, what he shipped in the open.
 
 ## Product Purpose
-Single-person portfolio for a senior backend / full-stack engineer (7+ years, MEAN stack, integrations, real-time data systems). Success: the visitor emails him or opens his GitHub / LinkedIn.
+Single-person portfolio for a backend / full-stack software engineer (9+ years, MEAN stack, integrations, real-time data systems). Success: the visitor emails him or opens his GitHub / LinkedIn.
 
 ## Positioning
 Backend and integration depth: Oracle OTM integrations, a real-time pricing/loyalty SaaS platform (Kafka, Elasticsearch, NiFi), martech data pipelines, and an npm package (ajv-error-parser).

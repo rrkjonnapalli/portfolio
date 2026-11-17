@@ -77,8 +77,9 @@ h1, h2, h3, p, figure { margin: 0; }
 .section-label { padding: 8px 0; font-size: 14px; font-weight: 700; }
 
 /* ---------- Open-source desk ---------- */
-.desk { display: flex; flex-direction: column; margin-top: 12px; border-top: var(--rule-heavy); }
-.desk__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr)); gap: 0 var(--gutter); }
+/* Full-width row under the lead and rail, so the rail ends level with the story. */
+.desk { flex: 1 1 100%; display: flex; flex-direction: column; margin-bottom: 28px; border-top: var(--rule-heavy); }
+.desk__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, max(230px, calc((100% - 2 * var(--gutter)) / 3))), 1fr)); gap: 0 var(--gutter); }
 .brief { display: flex; flex-direction: column; gap: 4px; height: 100%; padding: 14px 0; border-top: var(--rule-hair); text-decoration: none; }
 .brief__name { font-size: 25px; line-height: 1.1; font-weight: 700; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
 .brief__text { font-size: 17px; line-height: 1.4; }
